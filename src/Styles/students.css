@@ -1,0 +1,80 @@
+:root {
+    --Pcolor: rgb(255, 68, 30);
+    --white: #ffffff;
+    --border: rgba(139, 142, 143,0.1);
+    --hover: rgba(139, 142, 143,0.2);
+  }
+
+.container{
+    height: 70vh;
+    width: 70vw;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: absolute;
+    top: 27%;
+    left: 350px;
+    padding: 30px;
+    border-radius: 4px;
+  }
+
+  .openForm{
+    position: absolute;
+    left: 350px;
+    top: 130px;
+  }
+  .excelFile{
+    position: absolute;
+    top: 130px;
+    right: 110px;
+  }
+
+ button{
+    padding: 7px 20px;
+    border-radius: 4px;
+    background-color: var(--Pcolor);
+    color: white;
+    border: none;
+    transition: .3s;
+  }
+ button:hover{
+    background-color: rgba(237, 90, 60, 0.6);
+  }
+
+  .searchInputs{
+    display: flex;
+    column-gap: 20px;
+    padding: 15px 0px;
+  }
+
+  .searchInputs input[type=text]{
+    border-radius: 4px; 
+  }
+  .head{
+    display: flex;
+    width: 100%;
+    position: relative;
+    padding-bottom: 25px;
+    margin-top: 20px;
+  }
+  .head button{
+    position: absolute;
+    right:0 ;
+  }
+  .currPage{
+    position: absolute;
+    left: 350px;
+    top: 90px;
+  }
+  thead :nth-child(6) button{
+    color: var(--Pcolor);
+     margin-right: -50px;
+     margin-left: 20px;
+    background-color: rgb(252, 250, 250);
+    padding: 5px 7px;
+    transition: 0.3s;
+  }
+  
+  thead :nth-child(6) button:hover{
+    background-color: var(--Pcolor);
+    color: white;
+  }

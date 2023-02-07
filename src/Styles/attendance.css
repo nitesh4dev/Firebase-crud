@@ -1,0 +1,21 @@
+.attendancePage{
+    position: absolute;
+    top: 150px;
+    left: 350px;
+    width: 70%;
+}
+.attendancePage .DateRange{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.attendancePage .searchInputs{
+    display: flex;
+    column-gap: 30px;
+    margin-bottom: 30px;
+}
+.attendancePage .report{
+    display: flex;
+    column-gap: 55px;
+    margin-bottom: 30px;
+}

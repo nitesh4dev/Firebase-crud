@@ -3,7 +3,9 @@ import "../App.css";
 import { globalData } from '../App';
 
 const AddStudents = () => {
-    const { addStudent} = useContext(globalData);
+
+
+    const { addStudent } = useContext(globalData);
     const [inputs, setInputs] = useState({
         fname: "",
         mname: "",
@@ -25,7 +27,7 @@ const AddStudents = () => {
         let value = e.target.value;
         setInputs({ ...inputs, [name]: value });
     }
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         addStudent(inputs);
@@ -45,8 +47,7 @@ const AddStudents = () => {
     }
 
     return (
-        <div className="addstudents container">
-            <h4>Add Students</h4>
+        <div className="formContainer">
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col">

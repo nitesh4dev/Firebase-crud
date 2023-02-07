@@ -20,7 +20,7 @@ const Login = () => {
             event.preventDefault();
             if (credential.username === "ResoluteAI" && credential.password === "Nitesh") {
                 setValidated(true);
-                navigate("/dashboard/addstudents");
+                navigate("/dashboard/home");
             }
             else {
                 alert("Please fill valid credentials")
