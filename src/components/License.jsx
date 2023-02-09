@@ -1,8 +1,15 @@
-import React from "react";
 import Table from 'react-bootstrap/Table';
-import "../Styles/license.css"
+import "../Styles/license.css";
+import Modal from 'react-bootstrap/Modal';
+import { useState } from 'react';
+import LicenseForm from './LicenseForm';
+import Button from 'react-bootstrap/Button';
+
 
 const License = () => {
+
+    const [show, setShow] = useState(false);
+
     return (
         <>
             <div className="currPage">
@@ -24,7 +31,7 @@ const License = () => {
                             <h4>0</h4>
                         </div>
                         <div>
-                            <button>Add Licenses +</button>
+                            <button onClick={() => setShow(true)} >Add Licenses +</button>
                             <p>No more Licenses avaliable, contact ResoluteAI team</p>
                         </div>
                     </div>
@@ -45,40 +52,51 @@ const License = () => {
                     </div>
                 </div>
                 <div className="searchInputs">
-                    <input type="text" placeholder="Name or ID"/>
+                    <input type="text" placeholder="Name or ID" />
                     <select name="" id="">
                         <option value="" selected disabled hidden >Select Bus</option>
                         <option value="">A</option>
                     </select>
                 </div>
                 <div className="Table">
-                <Table striped bordered>
-      <thead>
-        <tr>
-          <th>Photo</th>
-          <th>Emp-ID Number</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Bus No</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>Login-Device-Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Image</td>
-          <td>08048</td>
-          <td>The name</td>
-          <td>7506135522</td>
-          <td>7856</td>
-          <td>example@gmail.com</td>
-          <td>08u0u</td>
-          <td>Android</td>
-        </tr>
-      </tbody>
-    </Table>
+                    <Table striped bordered>
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Emp-ID Number</th>
+                                <th>Name</th>
+                                <th>Phone Number</th>
+                                <th>Bus No</th>
+                                <th>Email</th>
+                                <th>Password</th>
+                                <th>Login-Device-Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Image</td>
+                                <td>08048</td>
+                                <td>The name</td>
+                                <td>7506135522</td>
+                                <td>7856</td>
+                                <td>example@gmail.com</td>
+                                <td>08u0u</td>
+                                <td>Android</td>
+                            </tr>
+                        </tbody>
+                    </Table>
                 </div>
+                <Modal show={show}>
+                    <Modal.Header>
+                        <Modal.Title>Add License</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body><LicenseForm/></Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={() => setShow(false)}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         </>
     )

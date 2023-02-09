@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "../Styles/students.css";
 import AddStudents from "./AddStudent";
 import { HiOutlineUpload } from "react-icons/hi";
-import { BsDownload } from "react-icons/bs"
+import { BsDownload } from "react-icons/bs";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -87,7 +87,7 @@ const Students = () => {
                     <tr key={ind}>
                       <td>1000</td>
                       <td>{val.name}</td>
-                      <td>{val.class}</td>
+                      <td>{val.std}</td>
                       <td>{val.division}</td>
                       <td>Auto</td>
                       <td>Studying</td>

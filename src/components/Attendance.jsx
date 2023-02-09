@@ -6,7 +6,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import DataTable from "./DataTable";
 import "../Styles/attendance.css";
-
+import { BsDownload } from "react-icons/bs"
 
 
 const Attendance = () => {
@@ -72,23 +72,23 @@ const Attendance = () => {
                 </div>
                 <div className="report">
                     <div>
-                        <h6>Date: 06-02-2023</h6>
+                        <h5>Date: 06-02-2023</h5>
                     </div>
                     <div>
                         <h6>Changed bus ExcelReport</h6>
-                        <button>Download</button>
+                        <button>Download <BsDownload/></button>
                     </div>
                     <div>
                         <h6>All Attendance Details</h6>
-                        <button>Download</button>
+                        <button>Download <BsDownload/></button>
                     </div>
                     <div>
                         <h6>All Bus Reports</h6>
-                        <button>Download</button>
+                        <button>Download <BsDownload/></button>
                     </div>
                     <div>
                         <h6>ScannedIn/ScannedOut Report</h6>
-                        <button>Download</button>
+                        <button>Download <BsDownload/></button>
                     </div>
                 </div>
                 <div className="table">

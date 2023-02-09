@@ -1,0 +1,31 @@
+.licenseForm form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 50px;
+    column-gap: 30px;
+    margin-left: 25px;
+    /* background-color: aqua; */
+    /* height: 100%; */
+}
+.licenseForm form div{
+    width: 30%;
+    position: relative;
+    height: 40px;
+}
+.licenseForm input{
+    width: 100%;
+}
+.licenseForm input[type="submit"]{
+    position: absolute;
+    bottom: 20px;
+    width: 30%;
+}
+input[type="file"]{
+    border: none;
+    cursor: pointer;
+}
+input[type="file"]:focus{
+    border: none;
+    box-shadow: none;
+}

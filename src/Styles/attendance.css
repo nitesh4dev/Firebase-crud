@@ -1,3 +1,9 @@
+:root {
+    --Pcolor: rgb(255, 68, 30);
+    --white: #ffffff;
+    --border: rgba(139, 142, 143,0.1);
+    --hover: rgba(139, 142, 143,0.2);
+  }
 .attendancePage{
     position: absolute;
     top: 150px;
@@ -18,4 +24,25 @@
     display: flex;
     column-gap: 55px;
     margin-bottom: 30px;
+    text-align: center;
+}
+.attendancePage .report button{
+    margin-top: 15px;
+}
+.attendancePage .report h6{
+    position: relative;
+}
+.attendancePage .report h5{
+    font-size: 17px;
+}
+.attendancePage .report h6::after{
+   content: " ";
+   position: absolute;
+   height: 20px;
+   width: 3px;
+   background-color: var(--Pcolor);
+   right: 50%;
+   top: 100%;
+   border-radius: 4px;
+   transform: translateX(50%);
 }

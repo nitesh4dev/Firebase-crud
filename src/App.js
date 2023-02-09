@@ -31,17 +31,19 @@ function App() {
 
 
   const addStudent = async (inputs, id) => {
+    console.log(inputs)
     try {
       const shortend = {
         name: inputs.fname + " " + inputs.mname + " " + inputs.lname,
-        class: inputs.class,
+        class: inputs.std,
         division: inputs.division,
         rollNumber: inputs.rollNumber,
-        address: inputs.addrs1 + " ||" + inputs.addrs2,
+        address: inputs.addrs1 + " " + inputs.addrs2,
         landmark: inputs.landmark,
         city: inputs.city,
         pincode: inputs.pincode
       }
+      console.log(shortend)
 
       if (id) {
         const studentDoc = doc(db, "students", id);
