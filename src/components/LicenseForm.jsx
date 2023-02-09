@@ -54,7 +54,7 @@ const LicenseForm = () => {
                 password: password ? "" : "Password is Required"
             })
         }
-        if (/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/.test(busNumber) == false) {
+        else if (/^[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/.test(busNumber) == false) {
             setErrors({...errors,busNumber:"Please enter a Valid Bus Number"})
         }
         else if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false) {
