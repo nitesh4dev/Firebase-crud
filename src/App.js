@@ -1,5 +1,5 @@
 import Login from './components/Login';
-import Navbar from './components/Navbar';
+import Dashboard from './components/Dashboard';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -13,16 +13,16 @@ import Attendance from './components/Attendance';
 import Home from './components/Home';
 import License from './components/License';
 import Settings from './components/Settings';
+import Protected from './components/Protected';
 
 export const globalData = createContext();
 
 function App() {
 
   const studentsCollection = collection(db, "students");
-  const [validated, setValidated] = useState(false);
   const [students, setStudents] = useState([]);
-  const [enableEdit, setEnableEdit] = useState(false)
-
+  const [enableEdit, setEnableEdit] = useState(false);
+  const [auth, setAuth] = useState(false);
 
   const getStudents = async () => {
     const data = await getDocs(studentsCollection);
@@ -77,7 +77,8 @@ function App() {
     deleteStudent: deleteStudent,
     enableEdit: enableEdit,
     setEnableEdit: setEnableEdit,
-    setValidated: setValidated
+    setAuth: setAuth,
+    auth: auth
   }
 
 
@@ -92,14 +93,15 @@ function App() {
       <globalData.Provider value={dataCentre}>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={validated? <Navbar />: <Login/>}>
-            <Route path='home' element={<Home />} />
-            <Route path='attendance' element={<Attendance />} />
-            <Route path='analytics' element={<Analytics />} />
-            <Route path='students' element={<Students />} />
-            <Route path='license' element={<License />} />
-            <Route path='setting' element={<Settings />} />
-            
+          <Route element={<Protected />}>
+            <Route path="/dashboard" element={<Dashboard/>}>
+              <Route path='home' element={<Home />} />
+              <Route path='attendance' element={<Attendance />} />
+              <Route path='analytics' element={<Analytics />} />
+              <Route path='students' element={<Students />} />
+              <Route path='license' element={<License />} />
+              <Route path='setting' element={<Settings />} />
+            </Route>
           </Route>
         </Routes>
       </globalData.Provider>
