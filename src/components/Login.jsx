@@ -15,8 +15,8 @@ const Login = () => {
     const verifyUser = (event) => {
             event.preventDefault();
             if (inputs.username === "ResoluteAI" && inputs.password === "Nitesh") {
-                localStorage.setItem("isLoggedIn",true);
-                navigate("/dashboard/home");
+                localStorage.setItem("jwt","logged");
+                navigate("/dashboard/home", { replace: true })            
             }
             else {
                 alert("Please fill valid credentials")

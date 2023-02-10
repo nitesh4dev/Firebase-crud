@@ -13,17 +13,15 @@ import Attendance from './components/Attendance';
 import Home from './components/Home';
 import License from './components/License';
 import Settings from './components/Settings';
+import PrivateRoute from './components/PrivateRoute';
 import { Navigate } from 'react-router-dom';
-
 export const globalData = createContext();
 
 function App() {
-
   const studentsCollection = collection(db, "students");
   const [students, setStudents] = useState([]);
-  const [enableEdit, setEnableEdit] = useState(false);
-  const [auth, setAuth] = useState(false);
-  console.log(auth)
+  const [enableEdit, setEnableEdit] = useState("");
+  const [jwt, setJwt] = useState(false);
 
   const getStudents = async () => {
     const data = await getDocs(studentsCollection);
@@ -71,6 +69,14 @@ function App() {
     }
   }
 
+  const logout = () => {
+    localStorage.setItem("jwt", "")
+  }
+
+  useEffect(() => {
+    setJwt(localStorage.getItem("jwt"));
+    getStudents();
+  }, [])
 
   const dataCentre = {
     students: students,
@@ -78,13 +84,9 @@ function App() {
     deleteStudent: deleteStudent,
     enableEdit: enableEdit,
     setEnableEdit: setEnableEdit,
+    logout: logout
   }
 
-
-  useEffect(() => {
-    setAuth(localStorage.getItem("isLoggedIn"));
-    getStudents();
-  },[])
 
 
   return (
@@ -92,8 +94,9 @@ function App() {
     <BrowserRouter>
       <globalData.Provider value={dataCentre}>
         <Routes>
-          <Route path="/" element={auth?<Dashboard/>:<Login/>} />
-            <Route path="/dashboard" element={<Dashboard/>}>
+          <Route path="/" element={jwt ? <Navigate to="/dashboard/home" /> : <Login />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard" element={<Dashboard />}>
               <Route path='home' element={<Home />} />
               <Route path='attendance' element={<Attendance />} />
               <Route path='analytics' element={<Analytics />} />
@@ -101,6 +104,7 @@ function App() {
               <Route path='license' element={<License />} />
               <Route path='setting' element={<Settings />} />
             </Route>
+          </Route>
         </Routes>
       </globalData.Provider>
     </BrowserRouter>
