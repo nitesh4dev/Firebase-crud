@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { globalData } from '../App';
 
 const Login = () => {
-    const {setAuth} = useContext(globalData);
     const [inputs, setInputs] = useState({ username: "", password: "" });
     const navigate = useNavigate();
 
@@ -16,7 +15,7 @@ const Login = () => {
     const verifyUser = (event) => {
             event.preventDefault();
             if (inputs.username === "ResoluteAI" && inputs.password === "Nitesh") {
-                setAuth(true);
+                localStorage.setItem("isLoggedIn",true);
                 navigate("/dashboard/home");
             }
             else {

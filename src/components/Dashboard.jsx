@@ -6,11 +6,8 @@ import {IoMdContact} from "react-icons/io"
 import { SiSimpleanalytics } from "react-icons/si"
 import {RiDashboardFill,RiContactsBookLine} from "react-icons/ri"
 import { Outlet } from "react-router-dom";
-import { globalData } from '../App';
-import { useContext } from 'react';
 
 function Dashboard() {
-  const { setValidated } = useContext(globalData);
   const date = new Date();
   let day = date.getDate();
   let month = date.getMonth();
@@ -34,7 +31,7 @@ function Dashboard() {
             <NavLink to="students"><span><MdOutlineManageSearch /></span>Manage students</NavLink>
             <NavLink to="license"><span><RiContactsBookLine /></span>Manage Licenses</NavLink>
             <NavLink to="setting"><span><MdManageAccounts /></span>Settings</NavLink>
-            <Link onClick={()=>setValidated(false)}><span><BiLogOutCircle /></span>Logout</Link>
+            <Link onClick={()=>localStorage.setItem("isLoggedIn",false)}><span><BiLogOutCircle /></span>Logout</Link>
 
           </div>
         </div>

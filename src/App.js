@@ -13,7 +13,7 @@ import Attendance from './components/Attendance';
 import Home from './components/Home';
 import License from './components/License';
 import Settings from './components/Settings';
-import Protected from './components/Protected';
+import { Navigate } from 'react-router-dom';
 
 export const globalData = createContext();
 
@@ -23,6 +23,7 @@ function App() {
   const [students, setStudents] = useState([]);
   const [enableEdit, setEnableEdit] = useState(false);
   const [auth, setAuth] = useState(false);
+  console.log(auth)
 
   const getStudents = async () => {
     const data = await getDocs(studentsCollection);
@@ -77,14 +78,13 @@ function App() {
     deleteStudent: deleteStudent,
     enableEdit: enableEdit,
     setEnableEdit: setEnableEdit,
-    setAuth: setAuth,
-    auth: auth
   }
 
 
   useEffect(() => {
+    setAuth(localStorage.getItem("isLoggedIn"));
     getStudents();
-  })
+  },[])
 
 
   return (
@@ -92,8 +92,7 @@ function App() {
     <BrowserRouter>
       <globalData.Provider value={dataCentre}>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route element={<Protected />}>
+          <Route path="/" element={auth?<Dashboard/>:<Login/>} />
             <Route path="/dashboard" element={<Dashboard/>}>
               <Route path='home' element={<Home />} />
               <Route path='attendance' element={<Attendance />} />
@@ -102,7 +101,6 @@ function App() {
               <Route path='license' element={<License />} />
               <Route path='setting' element={<Settings />} />
             </Route>
-          </Route>
         </Routes>
       </globalData.Provider>
     </BrowserRouter>
